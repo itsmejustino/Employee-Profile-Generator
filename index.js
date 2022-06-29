@@ -15,7 +15,7 @@
 // WHEN I decide to finish building my team
 // THEN I exit the application, and the HTML is generated
 
-const fs = rclequire('fs');
+const fs = require('fs');
 const inquirer = require('inquirer');
 
 const team = [];
@@ -124,19 +124,8 @@ function addIntern() {
     ])
     .then((data) => {
       team.push(data);
-      getNext(data.addMore);
+      getNext(data.addMore).then(team);
     });
-}
-
-function generateHtml() {
-  const stringifiedTeam = JSON.stringify(team);
-  fs.writeFile('./', `${stringifiedTeam.input}`, 'utf-8', (err) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log('team successfully written');
-    }
-  });
 }
 
 // get the manager's name, employee ID, email address and office number
@@ -185,3 +174,26 @@ inquirer
     team.push(data);
     getNext(data.addMore);
   });
+
+  function generateHtml() {
+    //   const stringifiedTeam = JSON.parse(JSON.stringify(team));
+      fs.writeFile(`./dist/index-test2.html`,`<!DOCTYPE html>
+      <html lang="en">
+      <head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <link src="./styles.css" rel="stylesheet" type="text/css">
+          <title>Team Generator</title>
+      </head>
+      <body>
+      ${JSON.parse(JSON.stringify(team[0].managerName || team[0].internName || team[0].engineerName))}
+      </body>
+      </html>` , 'utf-8', (err) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log('team successfully written');
+        }
+      });
+    }
