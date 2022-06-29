@@ -124,7 +124,7 @@ function addIntern() {
     ])
     .then((data) => {
       team.push(data);
-      getNext(data.addMore).then(team);
+      getNext(data.addMore);
     });
 }
 
@@ -176,7 +176,15 @@ inquirer
   });
 
   function generateHtml() {
-    //   const stringifiedTeam = JSON.parse(JSON.stringify(team));
+    // let i= 0;
+    console.log(team)
+    const managerEl = team[0].managerName;
+    const engineerEl = team[1].engineerName;
+    const internEl = team[2].internName;
+    
+    // for (i=0; i < team.length; i++) {
+    //     managerEl
+    // }
       fs.writeFile(`./dist/index-test2.html`,`<!DOCTYPE html>
       <html lang="en">
       <head>
@@ -187,7 +195,9 @@ inquirer
           <title>Team Generator</title>
       </head>
       <body>
-      ${JSON.parse(JSON.stringify(team[0].managerName || team[0].internName || team[0].engineerName))}
+      ${JSON.parse(JSON.stringify(managerEl))}
+      ${JSON.parse(JSON.stringify(engineerEl))}
+      ${JSON.parse(JSON.stringify(internEl))}
       </body>
       </html>` , 'utf-8', (err) => {
         if (err) {
