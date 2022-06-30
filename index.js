@@ -195,9 +195,7 @@ inquirer
           <title>Team Generator</title>
       </head>
       <body>
-      ${JSON.parse(JSON.stringify(managerEl))}
-      ${JSON.parse(JSON.stringify(engineerEl))}
-      ${JSON.parse(JSON.stringify(internEl))}
+     
       </body>
       </html>` , 'utf-8', (err) => {
         if (err) {
@@ -207,3 +205,9 @@ inquirer
         }
       });
     }
+
+
+// elemnts for each interpelated string to add to HTML
+    //  ${JSON.parse(JSON.stringify(managerEl))}
+    //   ${JSON.parse(JSON.stringify(engineerEl))}
+    //   ${JSON.parse(JSON.stringify(internEl))}
