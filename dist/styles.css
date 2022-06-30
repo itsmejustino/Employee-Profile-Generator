@@ -6,7 +6,11 @@
 }
 
 #engineer-card, #manager-card, #intern-card {
-    
+    display: flex;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
 }
 
 .teams-container{
