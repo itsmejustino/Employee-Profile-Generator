@@ -31,7 +31,7 @@ function getNext(option) {
     generateHtml();
   }
 }
-
+//Intern card information. Name, ID#, Email, School Name
 function addEngineer() {
   inquirer
     .prompt([
@@ -80,7 +80,7 @@ function addEngineer() {
       getNext(data.addMore);
     });
 }
-
+//Intern card information. Name, ID#, Email, School Name
 function addIntern() {
   inquirer
     .prompt([
@@ -129,7 +129,7 @@ function addIntern() {
     });
 }
 
-// get the manager's name, employee ID, email address and office number
+//manager card information. Name, ID#, Email, Office#
 inquirer
   .prompt([
     {
@@ -179,9 +179,9 @@ inquirer
   function generateHtml() {
     // let i= 0;
     console.log(team)
-    // const managerEl = team[0].managerName;
-    // const engineerEl = team[1].engineerName;
-    // const internEl = team[2].internName;
+    const managerEl = team[0].managerName;
+    const engineerEl = team[0].engineerName;
+    // let internEl = team[0].internName;
     
     // for (i=0; i < team.length; i++) {
     //     managerEl
@@ -233,7 +233,7 @@ inquirer
              
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Name: </li>
+                <li class="list-group-item">Name: ${JSON.parse(JSON.stringify(team[0].internName))}</li>
                 <li class="list-group-item">ID: </li>
                 <li class="list-group-item">School: </li>
               </ul>
@@ -263,7 +263,7 @@ inquirer
               
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Name:</li>
+                <li class="list-group-item">Name: ${JSON.parse(JSON.stringify(managerEl))}</li>
                 <li class="list-group-item">ID</li>
                 <li class="list-group-item">Office #:</li>
               </ul>
@@ -298,7 +298,7 @@ inquirer
                 <h5 class="card-title">Engineer</h5>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Name: </li>
+                <li class="list-group-item">Name: ${JSON.parse(JSON.stringify(engineerEl))} </li>
                 <li class="list-group-item">ID: </li>
                 <li class="list-group-item">Github Username:</li>
               </ul>
@@ -310,17 +310,12 @@ inquirer
           </section>
         </body>
       </html>
-      ` , 'utf-8', (err) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log('team successfully written');
-        }
-      });
+      ` , 'utf-8', (err) => (err ? console.error(err) : console.log("Successfully sent team info to the team deck!"))
+    );
     }
 
 
 // elemnts for each interpelated string to add to HTML
-    //  ${JSON.parse(JSON.stringify(managerEl))}
+    // 
     //   ${JSON.parse(JSON.stringify(engineerEl))}
     //   ${JSON.parse(JSON.stringify(internEl))}
