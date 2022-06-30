@@ -5,7 +5,26 @@
 
 }
 
-.nav-container
-{
+#engineer-card, #manager-card, #intern-card {
     
 }
+
+.teams-container{
+    display: flex;
+    margin-top: 5%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
+#nav-container{
+ display: flex;
+justify-content: center;
+align-items: center;
+margin-bottom: 5%;
+}
+#header-container{
+
+    display: flex;
+}
+
