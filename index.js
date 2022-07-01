@@ -21,8 +21,8 @@ const inquirer = require('inquirer');
 const team = [];
 
 function getNext(option) {
-  if (option === 'addEngineer') {
-    addEngineer();
+  if (option === 'bringonEngineer') {
+    bringonEngineer();
   }
   if (option === 'addIntern') {
     addIntern();
@@ -32,7 +32,7 @@ function getNext(option) {
   }
 }
 //Intern card information. Name, ID#, Email, School Name
-function addEngineer() {
+function bringonEngineer() {
   inquirer
     .prompt([
       {
@@ -57,11 +57,11 @@ function addEngineer() {
         type: 'input',
       },
       {
-        name: 'addMore',
+        name: 'newteamMember',
         type: 'list',
         choices: [
           {
-            value: 'addEngineer',
+            value: 'bringonEngineer',
             name: 'Add engineer',
           },
           {
@@ -77,7 +77,7 @@ function addEngineer() {
     ])
     .then((data) => {
       team.push(data);
-      getNext(data.addMore);
+      getNext(data.newteamMember);
     });
 }
 //Intern card information. Name, ID#, Email, School Name
@@ -105,11 +105,11 @@ function addIntern() {
         type: 'input',
       },
       {
-        name: 'addMore',
+        name: 'newteamMember',
         type: 'list',
         choices: [
           {
-            value: 'addEngineer',
+            value: 'bringonEngineer',
             name: 'Add engineer',
           },
           {
@@ -125,7 +125,7 @@ function addIntern() {
     ])
     .then((data) => {
       team.push(data);
-      getNext(data.addMore);
+      getNext(data.newteamMember);
     });
 }
 
@@ -153,12 +153,12 @@ inquirer
       message: 'What is the office number?',
     },
     {
-      name: 'addMore',
+      name: 'newteamMember',
       type: 'list',
       choices: [
         {
-          value: 'addEngineer',
-          name: 'Add engineer',
+          value: 'bringonEngineer',
+          name: 'Add Engineer',
         },
         {
           value: 'addIntern',
@@ -173,14 +173,17 @@ inquirer
   ])
   .then((data) => {
     team.push(data);
-    getNext(data.addMore);
+    getNext(data.newteamMember);
   });
 
   function generateHtml() {
     // let i= 0;
     console.log(team)
-    const managerEl = team[0].managerName;
-    const engineerEl = team[0].engineerName;
+    // let managerEl = team[0].managerName;
+    // let engineerEl = team[0].engineerName;
+    console.log(team[0].managerName)
+    console.log(team[1].engineerName)
+    console.log(team[2].engineerName)
     // let internEl = team[0].internName;
     
     // for (i=0; i < team.length; i++) {
@@ -233,7 +236,7 @@ inquirer
              
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Name: ${JSON.parse(JSON.stringify(team[0].internName))}</li>
+                <li class="list-group-item">Name: ${team[2].internName} </li>
                 <li class="list-group-item">ID: </li>
                 <li class="list-group-item">School: </li>
               </ul>
@@ -263,12 +266,12 @@ inquirer
               
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Name: ${JSON.parse(JSON.stringify(managerEl))}</li>
+                <li class="list-group-item">Name: ${team[0].managerName}</li>
                 <li class="list-group-item">ID</li>
                 <li class="list-group-item">Office #:</li>
               </ul>
               <div class="card-body">
-                Email:  <a href="#" class="card-link"></a>
+                Email:  <a href="#" class="card-link"> https://github.com/${team[0].managerName}</a>
               </div>
             </div>
             <div class="card" id="engineer-card" style="width: 18rem">
@@ -298,7 +301,7 @@ inquirer
                 <h5 class="card-title">Engineer</h5>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Name: ${JSON.parse(JSON.stringify(engineerEl))} </li>
+                <li class="list-group-item">Name: ${team[1].engineerName}</li>
                 <li class="list-group-item">ID: </li>
                 <li class="list-group-item">Github Username:</li>
               </ul>
@@ -310,7 +313,7 @@ inquirer
           </section>
         </body>
       </html>
-      ` , 'utf-8', (err) => (err ? console.error(err) : console.log("Successfully sent team info to the team deck!"))
+      ` , 'utf-8', (err) => (err ? console.log(err) : console.log("Successfully sent team info to the team deck!"))
     );
     }
 
@@ -319,3 +322,4 @@ inquirer
     // 
     //   ${JSON.parse(JSON.stringify(engineerEl))}
     //   ${JSON.parse(JSON.stringify(internEl))}
+    // ${JSON.parse(JSON.stringify(team[0].internName))}
