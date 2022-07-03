@@ -20,18 +20,19 @@ const inquirer = require('inquirer');
 
 const team = [];
 
+//adds next section of questions depending on answer selected by user.
 function getNext(option) {
   if (option === 'bringonEngineer') {
     bringonEngineer();
   }
-  if (option === 'addIntern') {
-    addIntern();
+  if (option === 'bringonIntern') {
+    bringonIntern();
   }
   if (option === 'finish') {
     generateHtml();
   }
 }
-//Intern card information. Name, ID#, Email, School Name
+//Engineer card information. Name, ID#, Email, School Name
 function bringonEngineer() {
   inquirer
     .prompt([
@@ -65,7 +66,7 @@ function bringonEngineer() {
             name: 'Add engineer',
           },
           {
-            value: 'addIntern',
+            value: 'bringonIntern',
             name: 'Add intern',
           },
           {
@@ -81,7 +82,7 @@ function bringonEngineer() {
     });
 }
 //Intern card information. Name, ID#, Email, School Name
-function addIntern() {
+function bringonIntern() {
   inquirer
     .prompt([
       {
@@ -113,7 +114,7 @@ function addIntern() {
             name: 'Add engineer',
           },
           {
-            value: 'addIntern',
+            value: 'bringonIntern',
             name: 'Add intern',
           },
           {
@@ -161,7 +162,7 @@ inquirer
           name: 'Add Engineer',
         },
         {
-          value: 'addIntern',
+          value: 'bringonIntern',
           name: 'Add intern',
         },
         {
@@ -177,6 +178,15 @@ inquirer
   });
 
   function generateHtml() {
+
+
+      if(team.internName === null) {
+        team.internName[2] = "No input"
+        team.internId[2] = "No input"
+        team.school[2] = "No input"
+        team.internEmail[2] = "No input"
+      }
+
     // let i= 0;
     console.log(team)
     // let managerEl = team[0].managerFirstName;
