@@ -133,7 +133,7 @@ function addIntern() {
 inquirer
   .prompt([
     {
-      name: 'managerName',
+      name: 'managerFirstName',
       type: 'input',
       message: "What is the team manager's name?",
     },
@@ -148,7 +148,7 @@ inquirer
       message: "What is the manager's email address?",
     },
     {
-      name: 'officeNumber',
+      name: 'managerOfficeNumber',
       type: 'input',
       message: 'What is the office number?',
     },
@@ -179,9 +179,9 @@ inquirer
   function generateHtml() {
     // let i= 0;
     console.log(team)
-    // let managerEl = team[0].managerName;
+    // let managerEl = team[0].managerFirstName;
     // let engineerEl = team[0].engineerName;
-    console.log(team[0].managerName)
+    console.log(team[0].managerFirstName)
     console.log(team[1].engineerName)
     console.log(team[2].internName)
     // let internEl = team[0].internName;
@@ -266,9 +266,9 @@ inquirer
               
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Name: ${team[0].managerName}</li>
+                <li class="list-group-item">Name: ${team[0].managerFirstName}</li>
                 <li class="list-group-item">ID: ${team[0].employeeIdManager}</li>
-                <li class="list-group-item">Office#: ${team[0].officeNumber}</li>
+                <li class="list-group-item">Office#: ${team[0].managerOfficeNumber}</li>
               </ul>
               <div class="card-body">
                 Email:  <a href="${team[0].managerEmail}" class="card-link"> Email </a>
