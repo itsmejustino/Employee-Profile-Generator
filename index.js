@@ -52,7 +52,7 @@ function bringonEngineer() {
       },
     
       {
-        name: 'engineerGithub',
+        name: 'engineerGhub',
         message: "What is the engineer's GitHub username?",
         type: 'input',
       },
@@ -100,7 +100,7 @@ function addIntern() {
         type: 'input',
       },
       {
-        name: 'internSchool',
+        name: 'school',
         message: 'What school does the intern attend?',
         type: 'input',
       },
@@ -138,7 +138,7 @@ inquirer
       message: "What is the team manager's name?",
     },
     {
-      name: 'employeeId',
+      name: 'employeeIdManager',
       type: 'input',
       message: 'What is the employee ID?',
     },
@@ -183,7 +183,7 @@ inquirer
     // let engineerEl = team[0].engineerName;
     console.log(team[0].managerName)
     console.log(team[1].engineerName)
-    console.log(team[2].engineerName)
+    console.log(team[2].internName)
     // let internEl = team[0].internName;
     
     // for (i=0; i < team.length; i++) {
@@ -237,11 +237,11 @@ inquirer
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Name: ${team[2].internName} </li>
-                <li class="list-group-item">ID: </li>
-                <li class="list-group-item">School: </li>
+                <li class="list-group-item">ID: ${team[2].internId} </li>
+                <li class="list-group-item">School: ${team[2].school} </li>
               </ul>
               <div class="card-body">
-                Email: <a href="#" class="card-link"></a>
+                Email: <a href="${team[2].internEmail}" class="card-link">Email</a>
               </div>
             </div>
             <div class="card" id="manager-card" style="width: 18rem">
@@ -267,11 +267,11 @@ inquirer
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Name: ${team[0].managerName}</li>
-                <li class="list-group-item">ID</li>
-                <li class="list-group-item">Office #:</li>
+                <li class="list-group-item">ID: ${team[0].employeeIdManager}</li>
+                <li class="list-group-item">Office#: ${team[0].officeNumber}</li>
               </ul>
               <div class="card-body">
-                Email:  <a href="#" class="card-link"> https://github.com/${team[0].managerName}</a>
+                Email:  <a href="${team[0].managerEmail}" class="card-link"> Email </a>
               </div>
             </div>
             <div class="card" id="engineer-card" style="width: 18rem">
@@ -302,12 +302,12 @@ inquirer
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Name: ${team[1].engineerName}</li>
-                <li class="list-group-item">ID: </li>
-                <li class="list-group-item">Github Username:</li>
+                <li class="list-group-item">ID: ${team[1].engineerId} </li>
+                <li class="list-group-item">Github Username: ${team[1].engineerGhub}</li>
               </ul>
               <div class="card-body">
-                Email: <a href="#" class="card-link"></a>
-                Github: <a href="#" class="card-link"> </a>
+                Email: <a href="https://github.com/${team[1].engineerGhub}" class="card-link">Email</a>
+                Github: <a type='email'href="${team[1].engineerEmail}" class="card-link"> Github </a>
               </div>
             </div>
           </section>
