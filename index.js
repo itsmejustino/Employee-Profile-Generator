@@ -91,7 +91,7 @@ const bringonPadowan = () => {
     .prompt([
       {
         name: "PadowanName",
-        messsage: "What is the Padowan's name?",
+        message: "What is the Padowan's name?",
         type: "input",
       },
       {
