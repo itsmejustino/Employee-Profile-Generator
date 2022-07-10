@@ -15,9 +15,10 @@
 // WHEN I decide to finish building my squad
 // THEN I exit the application, and the HTML is generated
 
-const Padowan = require("./lib/Padowan");
-const Apprentice = require("./lib/Apprentice");
-const master = require("./lib/Master");
+const Padowan = require("./lib/Padowan.js");
+const Apprentice = require("./lib/Apprentice.js");
+const master = require("./lib/Master.js");
+const team = require("./lib/join-team.js");
 const fs = require("fs");
 const inquirer = require("inquirer");
 //set variable for
