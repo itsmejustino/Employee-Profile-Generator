@@ -17,23 +17,24 @@
 
 const Padowan = require("./lib/Padowan.js");
 const Apprentice = require("./lib/Apprentice.js");
-const master = require("./lib/Master.js");
-const team = require("./lib/join-team.js");
+const Master = require("./lib/Master.js");
+const Squad = require("./lib/join-team.js");
 const fs = require("fs");
 const inquirer = require("inquirer");
-//set variable for
-const squad = [];
+// const { stringify } = require("querystring");
+//set variable for squad to hold each object of the array. 
+const squad = new Squad;
 
-//adds next section of questions depending on answer selected by user.
-const getNext = (option) => {
-  if (option === "bringonApprentice") {
+//initializes each funcrtion. it takes in the user selection
+const initNext = (input) => {
+  if (input === "bringonApprentice") {
     bringonApprentice();
   }
-  if (option === "bringonPadowan") {
+  if (input === "bringonPadowan") {
     bringonPadowan();
   }
-  if (option === "finish") {
-    generateHtml();
+  if (input === "finish") {
+    generateHTML();
   }
 };
 //Apprentice card information. Name, ID#, Email, temple Name
@@ -81,27 +82,33 @@ const bringonApprentice = () => {
       },
     ])
     .then((data) => {
-      squad.push(data);
-      getNext(data.newSquadMember);
+      //pushes apprentice info to the array
+      const apprentice = new Apprentice(
+        this.apprenticeName,
+        this.apprenticeId,
+        this.apprenticeEmail,
+        this.temple
+      )
+      squad.push(apprentice);
+      initNext(data.newSquadMember);
     })
-    .then((data) => { });
 };
 //Padowan card information. Name, ID#, Email, temple Name
 const bringonPadowan = () => {
   inquirer
     .prompt([
       {
-        name: "PadowanName",
+        name: "padowanName",
         message: "What is the Padowan's name?",
         type: "input",
       },
       {
-        name: "PadowanId",
+        name: "padowanId",
         message: "What is the Padowan's ID?",
         type: "input",
       },
       {
-        name: "PadowanEmail",
+        name: "padowanEmail",
         message: "What is the Padowan's email?",
         type: "input",
       },
@@ -130,21 +137,29 @@ const bringonPadowan = () => {
       },
     ])
     .then((data) => {
-      squad.push(data);
-      getNext(data.newSquadMember);
+      //pushes padowan info to the array
+      const padowan = new Padowan(
+        this.padowanName,
+        this.padowanId,
+        this.padowanEmail,
+        this.temple
+      )
+      squad.push(padowan);
+      initNext(data.newSquadMember);
     });
 };
 
-//master card information. Name, ID#, Email, Office#
+//initial question. master card information. Name, ID#, Email, Office#
+// bringonMaster=()=>
 inquirer
   .prompt([
     {
-      name: "masterFirstName",
+      name: "masterName",
       type: "input",
       message: "What is the squad master's name?",
     },
     {
-      name: "employeeIdmaster",
+      name: "employeeIdMaster",
       type: "input",
       message: "What is the employee ID?",
     },
@@ -178,39 +193,27 @@ inquirer
     },
   ])
   .then((data) => {
-    squad.push(data);
-    getNext(data.newSquadMember);
+    //pushes padowan info to the array
+    const master = new Master(
+      this.masterName,
+      this.masterEmail,
+      this.masterOfficeNumber,
+      this.employeeIdMaster
+    )
+    squad.push(master);
+    initNext(data.newSquadMember);
   });
 
-generateHtml = () => {
-  fs.writeFile(`./dist/index-test2.html`, ` `, "utf-8", (err) =>
-    err
-      ? console.log(err)
-      : console.log("Successfully sent squad info to the squad deck!")
+  let squadString = JSON.stringify(squad);
+function generateHtml() {
+  
+  fs.writeFile(`./dist/index-test3.html`, squadString , "utf-8", (err) =>
+    err ? console.log(err) : console.log("Successfully sent squad info to the squad deck!")
   );
 };
-// elemnts for each interpelated string to add to HTML
-//
-//   ${JSON.parse(JSON.stringify(ApprenticeEl))}
-//   ${JSON.parse(JSON.stringify(PadowanEl))}
-// ${JSON.parse(JSON.stringify(squad[0].PadowanName))}
 
-// if(squad.PadowanName === null) {
-//   squad.PadowanName[2] = "No input"
-//   squad.PadowanId[2] = "No input"
-//   squad.temple[2] = "No input"
-//   squad.PadowanEmail[2] = "No input"
-// }
-
-// let i= 0;
-// console.log(squad)
-// let masterEl = squad[0].masterFirstName;
-// let ApprenticeEl = squad[0].ApprenticeName;
-// console.log(squad[0].masterFirstName)
-// console.log(squad[1].ApprenticeName)
-// console.log(squad[2].PadowanName)
-// let PadowanEl = squad[0].PadowanName;
-
-// for (i=0; i < squad.length; i++) {
-//     masterEl
-// }
+//program init
+// init = () => {
+// bringonMaster();
+// };
+// init();
