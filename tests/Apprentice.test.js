@@ -7,7 +7,7 @@ describe("Apprentice", () => {
       expect(apprentice.name).toEqual("string");
       expect(apprentice.id).toEqual(1);
       expect(apprentice.email).toEqual("name@me.com");
-      expect(apprentice.attribute2).toEqual("gitHub");
+      expect(apprentice.gHubUsername).toEqual("gitHub");
     });
   });
 });
