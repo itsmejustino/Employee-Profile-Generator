@@ -14,7 +14,7 @@
 ## Demo Video Link
 [Demo Video](https://drive.google.com/file/d/1ow7qVECJkpcqSEDhvUsG_Xi9r-6tA3_O/view)<br>
 ## License
-  [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+  [![License: GPL v3]('https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0')
 ## Install-Instructions 
   npm i 
 ## Usage-Info
