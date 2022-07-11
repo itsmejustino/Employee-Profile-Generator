@@ -1,4 +1,4 @@
-`
+```
 # Team Generator<br>
 ## Table of Contents <br>
 [Description](#description)<br>
@@ -45,4 +45,4 @@ https://github.com/itsmejustino
 ```
   npm install Jest. After install run 'npm test' in the terminal to test.
   ```
-`
+```
