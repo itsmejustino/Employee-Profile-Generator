@@ -22,9 +22,9 @@
   `npm i`
  
 ## Usage-Info
-```
+`
   After installing dependencies invoke the program by typing 'node index.js'. Answer prompts for each team member added in the terminal.
-  ```
+  `
 ## Demo
 
 [Demo Video](https://drive.google.com/file/d/1ow7qVECJkpcqSEDhvUsG_Xi9r-6tA3_O/view)<br>
