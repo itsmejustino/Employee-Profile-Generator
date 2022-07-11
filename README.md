@@ -1,5 +1,6 @@
+---
+# Team Generator 
 
-# Team Generator ---
 ## Table of Contents <br>
 [Description](#description)<br>
 [License](#license)<br>
@@ -47,5 +48,5 @@ https://github.com/itsmejustino
 
   * `npm install Jest.` 
   * `After install run 'npm test' in the terminal to test.`
-  
+  ---
 
