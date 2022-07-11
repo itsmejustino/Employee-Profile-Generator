@@ -24,9 +24,9 @@
   After installing dependencies invoke the program by typing 'node index.js'. Answer prompts for each team member added in the terminal.
   ```
 ## Demo Video Link
-```
+
 [Demo Video](https://drive.google.com/file/d/1ow7qVECJkpcqSEDhvUsG_Xi9r-6tA3_O/view)<br>
-```
+
 ## Contribute
 ```
   If you would like to contribute please send a pull request.
@@ -37,13 +37,10 @@
 If you are interested in contacting me or contributing to this project, please contact me via email and create a pull request to this repo.
 ```
 ### Github Username: 
-```
 https://github.com/itsmejustino
-```
+
 ### Email me at: 
-```
-  justindortiz@me.com 
-  ```
+ justindortiz@me.com 
 ## Tests 
 ```
   npm install Jest. After install run 'npm test' in the terminal to test.
