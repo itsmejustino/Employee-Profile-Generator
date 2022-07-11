@@ -1,6 +1,5 @@
 
-# Team Generator
----
+# Team Generator ---
 ## Table of Contents <br>
 [Description](#description)<br>
 [License](#license)<br>
