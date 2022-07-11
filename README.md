@@ -29,14 +29,14 @@
 [Demo Video](https://drive.google.com/file/d/1ow7qVECJkpcqSEDhvUsG_Xi9r-6tA3_O/view)<br>
 
 ## Contribute
-```
-  If you would like to contribute please send a pull request.
-  ```
+
+  `If you would like to contribute please send a pull request.`
+
 
 ## Questions 
-```
-If you are interested in contacting me or contributing to this project, please contact me via email and create a pull request to this repo.
-```
+
+`If you are interested in contacting me or contributing to this project, please contact me via email and create a pull request to this repo.`
+---
 ### Github Username: 
 https://github.com/itsmejustino
 
@@ -45,6 +45,6 @@ https://github.com/itsmejustino
 ## Tests 
 
   * `npm install Jest.` 
-  * After install run 'npm test' in the terminal to test.
+  * `After install run 'npm test' in the terminal to test.`
   
 
