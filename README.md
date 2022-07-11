@@ -22,7 +22,7 @@
   ```
 ## Usage-Info
 ```
-  After installing dependencies invoke the program by typing `'node index.js'`. Answer prompts for each team member added in the terminal.
+  After installing dependencies invoke the program by typing 'node index.js'. Answer prompts for each team member added in the terminal.
   ```
 ## Demo
 
