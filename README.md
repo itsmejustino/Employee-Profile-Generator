@@ -1,5 +1,6 @@
 
 # Team Generator<br>
+---
 ## Table of Contents <br>
 [Description](#description)<br>
 [License](#license)<br>
@@ -34,11 +35,11 @@
 
 
 ## Questions 
-
+---
 `If you are interested in contacting me or contributing to this project, please contact me via email and create a pull request to this repo.`
 
 ### Github Username:
----
+
 https://github.com/itsmejustino
 
 ### Email me at: 
