@@ -11,12 +11,14 @@ const squad = new Squad();
 generateHTML = () => {
   let squadString = JSON.stringify(squad);
   fs.writeFile(`./dist/index.html`, squadString, "utf-8", (err) =>
-    err ? console.log(err): console.log("Successfully sent squad info to the squad deck!")
+    err
+      ? console.log(err)
+      : console.log("Successfully sent squad info to the squad deck!")
   );
 };
 
 //Apprentice card information. Name, ID#, Email, temple Name
-bringonApprentice = ()=> {
+bringonApprentice = () => {
   inquirer
     .prompt([
       {
@@ -70,15 +72,14 @@ bringonApprentice = ()=> {
         data.apprenticeName,
         data.apprenticeId,
         data.apprenticeEmail,
-        data.apprenticeGhub,
+        data.apprenticeGhub
       );
-     squad.addSquadMember(apprentice);
+      squad.addSquadMember(apprentice);
       initNext(data.newSquadMember);
-      
     });
-}
+};
 //Padowan card information. Name, ID#, Email, temple Name
-bringonPadowan = () =>{
+bringonPadowan = () => {
   inquirer
     .prompt([
       {
@@ -135,71 +136,70 @@ bringonPadowan = () =>{
       );
       squad.addSquadMember(padowan);
       initNext(data.newSquadMember);
-      
     });
-}
+};
 
 //initial question. master card information. Name, ID#, Email, Office#
-bringonMaster = () =>{
-inquirer
-  .prompt([
-    {
-      name: "masterName",
-      type: "input",
-      message: "What is the squad master's name?",
-    },
-    {
-      name: "employeeIdMaster",
-      type: "input",
-      message: "What is the operator ID?",
-    },
-    {
-      name: "masterEmail",
-      type: "input",
-      message: "What is the master's transponder address?",
-    },
-    {
-      name: "masterOfficeNumber",
-      type: "input",
-      message: "What is the this master's suite number?",
-    },
-    {
-      name: "newSquadMember",
-      type: "list",
-      message: "What squad member will be added next?",
-      choices: [
-        {
-          value: "newMaster",
-          name: "Add Master",
-        },
-        {
-          value: "bringonApprentice",
-          name: "Add Apprentice",
-        },
-        {
-          value: "bringonPadowan",
-          name: "Add Padowan",
-        },
-        {
-          value: "finish",
-          name: "Finish",
-        },
-      ],
-    },
-  ])
-  .then((data) => {
-    //pushes padowan info to the array
-    const master = new Master(
-      data.masterName,
-      data.employeeIdMaster,
-      data.masterEmail,
-      data.masterOfficeNumber,
-    );
-    squad.addSquadMember(master);
-    initNext(data.newSquadMember);
-  });
-}
-
+bringonMaster = () => {
+  inquirer
+    .prompt([
+      {
+        name: "masterName",
+        type: "input",
+        message: "What is the squad master's name?",
+      },
+      {
+        name: "employeeIdMaster",
+        type: "input",
+        message: "What is the operator ID?",
+      },
+      {
+        name: "masterEmail",
+        type: "input",
+        message: "What is the master's transponder address?",
+      },
+      {
+        name: "masterOfficeNumber",
+        type: "input",
+        message: "What is the this master's suite number?",
+      },
+      {
+        name: "newSquadMember",
+        type: "list",
+        message: "What squad member will be added next?",
+        choices: [
+          {
+            value: "newMaster",
+            name: "Add Master",
+          },
+          {
+            value: "bringonApprentice",
+            name: "Add Apprentice",
+          },
+          {
+            value: "bringonPadowan",
+            name: "Add Padowan",
+          },
+          {
+            value: "finish",
+            name: "Finish",
+          },
+        ],
+      },
+    ])
+    .then((data) => {
+      //pushes padowan info to the array
+      const master = new Master(
+        data.masterName,
+        data.employeeIdMaster,
+        data.masterEmail,
+        data.masterOfficeNumber
+      );
+      squad.addSquadMember(master);
+      initNext(data.newSquadMember);
+    });
+};
+//inits next choice list to inquirer. if statements checks for user select for next choice.
 initNext = (input) => {
   if (input === "newMaster") {
     bringonMaster();
@@ -213,10 +213,6 @@ initNext = (input) => {
   if (input === "finish") {
     squad.saveFile();
   }
-}
+};
 //inits program
 bringonMaster();
-
-
-//program init
-
