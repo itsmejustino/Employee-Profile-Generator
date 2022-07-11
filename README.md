@@ -17,9 +17,9 @@
 ## License
   [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ## Install-Instructions 
-```
-  npm i 
-  ```
+
+  `npm i`
+ 
 ## Usage-Info
 ```
   After installing dependencies invoke the program by typing 'node index.js'. Answer prompts for each team member added in the terminal.
@@ -43,8 +43,8 @@ https://github.com/itsmejustino
 ### Email me at: 
  justindortiz@me.com 
 ## Tests 
-```
+
   * `npm install Jest.` 
   * After install run 'npm test' in the terminal to test.
-  ```
+  
 
