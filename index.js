@@ -21,7 +21,7 @@ bringonApprentice = ()=> {
     .prompt([
       {
         name: "apprenticeName",
-        messsage: "What is the Apprentice's name?",
+        message: "What is the Apprentice's name?",
         type: "input",
       },
       {
@@ -74,7 +74,7 @@ bringonApprentice = ()=> {
       );
      squad.addSquadMember(apprentice);
       initNext(data.newSquadMember);
-      console.log(squad);
+      
     });
 }
 //Padowan card information. Name, ID#, Email, temple Name
@@ -135,7 +135,7 @@ bringonPadowan = () =>{
       );
       squad.addSquadMember(padowan);
       initNext(data.newSquadMember);
-      console.log(squad);
+      
     });
 }
 
@@ -195,7 +195,6 @@ inquirer
       data.masterEmail,
       data.masterOfficeNumber,
     );
-    console.log(master);
     squad.addSquadMember(master);
     initNext(data.newSquadMember);
   });
