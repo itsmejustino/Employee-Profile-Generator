@@ -91,13 +91,14 @@ bringonApprentice = ()=> {
     .then((data) => {
       //pushes apprentice info to the array
       const apprentice = new Apprentice(
-        this.apprenticeName,
-        this.apprenticeId,
-        this.apprenticeEmail,
-        this.temple
+        data.apprenticeName,
+        data.apprenticeId,
+        data.apprenticeEmail,
+        data.apprenticeGhub,
       );
      squad.addSquadMember(apprentice);
       initNext(data.newSquadMember);
+      console.log(squad);
     });
 }
 //Padowan card information. Name, ID#, Email, temple Name
@@ -150,13 +151,14 @@ bringonPadowan = () =>{
     .then((data) => {
       //pushes padowan info to the array
       const padowan = new Padowan(
-        this.padowanName,
-        this.padowanId,
-        this.padowanEmail,
-        this.temple
+        data.padowanName,
+        data.padowanId,
+        data.padowanEmail,
+        data.temple
       );
       squad.addSquadMember(padowan);
       initNext(data.newSquadMember);
+      console.log(squad);
     });
 }
 
