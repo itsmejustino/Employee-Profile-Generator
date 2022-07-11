@@ -22,7 +22,7 @@
   ```
 ## Usage-Info
 ```
-  After installing dependencies invoke the program by typing 'node index.js'. Answer prompts for each team member added in the terminal.
+  After installing dependencies invoke the program by typing `'node index.js'`. Answer prompts for each team member added in the terminal.
   ```
 ## Demo
 
@@ -44,7 +44,7 @@ https://github.com/itsmejustino
  justindortiz@me.com 
 ## Tests 
 ```
-  * npm install Jest. 
+  * `npm install Jest.` 
   * After install run 'npm test' in the terminal to test.
   ```
 
