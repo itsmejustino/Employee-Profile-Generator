@@ -9,7 +9,8 @@
   "license": "ISC",
   "keywords": [],
   "dependencies": {
-    "inquirer": "^6.5.2"
+    "inquirer": "^6.5.2",
+    "jest": "^28.1.2"
   },
   "description": ""
 }
