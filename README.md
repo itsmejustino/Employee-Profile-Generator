@@ -43,6 +43,7 @@ https://github.com/itsmejustino
  justindortiz@me.com 
 ## Tests 
 ```
-  npm install Jest. After install run 'npm test' in the terminal to test.
+  * npm install Jest. 
+  * After install run 'npm test' in the terminal to test.
   ```
 
