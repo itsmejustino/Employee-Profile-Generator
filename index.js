@@ -11,9 +11,7 @@ const squad = new Squad();
 generateHTML = () => {
   let squadString = JSON.stringify(squad);
   fs.writeFile(`./dist/index.html`, squadString, "utf-8", (err) =>
-    err
-      ? console.log(err)
-      : console.log("Successfully sent squad info to the squad deck!")
+    err ? console.log(err): console.log("Successfully sent squad info to the squad deck!")
   );
 };
 
