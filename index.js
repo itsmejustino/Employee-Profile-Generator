@@ -1,44 +1,21 @@
-// WHEN I am prompted for my squad members and their information
-// THEN an HTML file is generated that displays a nicely formatted squad roster based on user input
-// WHEN I click on an email address in the HTML
-// THEN my default email program opens and populates the TO field of the email with the address
-// WHEN I click on the GitHub username
-// THEN that GitHub profile opens in a new tab
-// WHEN I start the application
-// THEN I am prompted to enter the squad master’s name, employee ID, email address, and office number
-// WHEN I enter the squad master’s name, employee ID, email address, and office number
-// THEN I am presented with a menu with the option to add an Apprentice or an Padowan or to finish building my squad
-// WHEN I select the Apprentice option
-// THEN I am prompted to enter the Apprentice’s name, ID, email, and GitHub username, and I am taken back to the menu
-// WHEN I select the Padowan option
-// THEN I am prompted to enter the Padowan’s name, ID, email, and temple, and I am taken back to the menu
-// WHEN I decide to finish building my squad
-// THEN I exit the application, and the HTML is generated
-
 const Padowan = require("./lib/Padowan.js");
 const Apprentice = require("./lib/Apprentice.js");
 const Master = require("./lib/Master.js");
 const Squad = require("./lib/join-team.js");
 const fs = require("fs");
 const inquirer = require("inquirer");
-// const SquadMember = require("./lib/card.js");
-// const { CompositionPage } = require("twilio/lib/rest/video/v1/composition.js");
-// const { stringify } = require("querystring");
-//set variable for squad to hold each object of the array.
+//set variable for squad to hold each object of the array. new Squad() is similar to squad = [];
 const squad = new Squad();
 
 //generate index html
-
 generateHTML = () => {
   let squadString = JSON.stringify(squad);
-  fs.writeFile(`./dist/index-test3.html`, squadString, "utf-8", (err) =>
+  fs.writeFile(`./dist/index.html`, squadString, "utf-8", (err) =>
     err
       ? console.log(err)
       : console.log("Successfully sent squad info to the squad deck!")
   );
 };
-
-//initializes each funcrtion. it takes in the user selection
 
 //Apprentice card information. Name, ID#, Email, temple Name
 bringonApprentice = ()=> {
@@ -51,12 +28,12 @@ bringonApprentice = ()=> {
       },
       {
         name: "apprenticeId",
-        message: "What is the Apprentice's ID?",
+        message: "What is the Apprentice's operator ID?",
         type: "input",
       },
       {
         name: "apprenticeEmail",
-        message: "What is the Apprentice's email?",
+        message: "What is the Apprentice's transponder address?",
         type: "input",
       },
 
@@ -68,6 +45,7 @@ bringonApprentice = ()=> {
       {
         name: "newSquadMember",
         type: "list",
+        message: "What squad member will be added next?",
         choices: [
           {
             value: "newMaster",
@@ -112,12 +90,12 @@ bringonPadowan = () =>{
       },
       {
         name: "padowanId",
-        message: "What is the Padowan's ID?",
+        message: "What is the Padowan's operator ID?",
         type: "input",
       },
       {
         name: "padowanEmail",
-        message: "What is the Padowan's email?",
+        message: "What is the Padowan's transponder address?",
         type: "input",
       },
       {
@@ -128,6 +106,7 @@ bringonPadowan = () =>{
       {
         name: "newSquadMember",
         type: "list",
+        message: "What squad member will be added next?",
         choices: [
           {
             value: "newMaster",
@@ -174,21 +153,22 @@ inquirer
     {
       name: "employeeIdMaster",
       type: "input",
-      message: "What is the employee ID?",
+      message: "What is the operator ID?",
     },
     {
       name: "masterEmail",
       type: "input",
-      message: "What is the master's email address?",
+      message: "What is the master's transponder address?",
     },
     {
       name: "masterOfficeNumber",
       type: "input",
-      message: "What is the office number?",
+      message: "What is the this master's suite number?",
     },
     {
       name: "newSquadMember",
       type: "list",
+      message: "What squad member will be added next?",
       choices: [
         {
           value: "newMaster",
@@ -224,7 +204,6 @@ inquirer
 }
 
 initNext = (input) => {
-  // const { bringonMaster, bringonApprentice, bringonPadowan } = input;
   if (input === "newMaster") {
     bringonMaster();
   }
@@ -234,12 +213,11 @@ initNext = (input) => {
   if (input === "bringonPadowan") {
     bringonPadowan();
   }
-  
   if (input === "finish") {
     squad.saveFile();
   }
 }
-
+//inits program
 bringonMaster();
 
 
