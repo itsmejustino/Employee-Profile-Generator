@@ -10,7 +10,9 @@
 [Tests](#tests)<br>
 
 ## Description 
+```
   This program generates a team page with information about each team member. This version is Star Wars themed so Master will be the Manager, Apprentice is the Developer, and Padowan is the Intern.
+  ```
 ## License
   [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ## Install-Instructions 
