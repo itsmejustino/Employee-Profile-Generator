@@ -27,10 +27,6 @@ const inquirer = require("inquirer");
 //set variable for squad to hold each object of the array.
 const squad = new Squad();
 
-
-
-
-
 //generate index html
 
 generateHTML = () => {
@@ -49,23 +45,23 @@ bringonApprentice = ()=> {
   inquirer
     .prompt([
       {
-        name: "ApprenticeName",
+        name: "apprenticeName",
         messsage: "What is the Apprentice's name?",
         type: "input",
       },
       {
-        name: "ApprenticeId",
+        name: "apprenticeId",
         message: "What is the Apprentice's ID?",
         type: "input",
       },
       {
-        name: "ApprenticeEmail",
+        name: "apprenticeEmail",
         message: "What is the Apprentice's email?",
         type: "input",
       },
 
       {
-        name: "ApprenticeGhub",
+        name: "apprenticeGhub",
         message: "What is the Apprentice's GitHub username?",
         type: "input",
       },
@@ -215,9 +211,9 @@ inquirer
     //pushes padowan info to the array
     const master = new Master(
       data.masterName,
+      data.employeeIdMaster,
       data.masterEmail,
       data.masterOfficeNumber,
-      data.employeeIdMaster,
     );
     console.log(master);
     squad.addSquadMember(master);
@@ -225,8 +221,8 @@ inquirer
   });
 }
 
-function initNext(input) {
-  const { bringonMaster, bringonApprentice, bringonPadowan } = input;
+initNext = (input) => {
+  // const { bringonMaster, bringonApprentice, bringonPadowan } = input;
   if (input === "newMaster") {
     bringonMaster();
   }
@@ -238,9 +234,10 @@ function initNext(input) {
   }
   
   if (input === "finish") {
-    squad.saveFile();;
+    squad.saveFile();
   }
 }
+
 bringonMaster();
 
 
