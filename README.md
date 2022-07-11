@@ -5,6 +5,7 @@
 [License](#license)<br>
 [Install-Instructions](#install-Instructions)<br>
 [Usage-Info](#usage-Info)<br>
+[Demo](#demo)<br>
 [Contribute](#contribute)<br>
 [Questions](#questions)<br>
 [Tests](#tests)<br>
@@ -23,7 +24,7 @@
 ```
   After installing dependencies invoke the program by typing 'node index.js'. Answer prompts for each team member added in the terminal.
   ```
-## Demo Video Link
+## Demo
 
 [Demo Video](https://drive.google.com/file/d/1ow7qVECJkpcqSEDhvUsG_Xi9r-6tA3_O/view)<br>
 
