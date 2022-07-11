@@ -21,24 +21,31 @@ const Master = require("./lib/Master.js");
 const Squad = require("./lib/join-team.js");
 const fs = require("fs");
 const inquirer = require("inquirer");
+// const SquadMember = require("./lib/card.js");
+// const { CompositionPage } = require("twilio/lib/rest/video/v1/composition.js");
 // const { stringify } = require("querystring");
-//set variable for squad to hold each object of the array. 
-const squad = new Squad;
+//set variable for squad to hold each object of the array.
+const squad = new Squad();
+
+
+
+
+
+//generate index html
+
+generateHTML = () => {
+  let squadString = JSON.stringify(squad);
+  fs.writeFile(`./dist/index-test3.html`, squadString, "utf-8", (err) =>
+    err
+      ? console.log(err)
+      : console.log("Successfully sent squad info to the squad deck!")
+  );
+};
 
 //initializes each funcrtion. it takes in the user selection
-const initNext = (input) => {
-  if (input === "bringonApprentice") {
-    bringonApprentice();
-  }
-  if (input === "bringonPadowan") {
-    bringonPadowan();
-  }
-  if (input === "finish") {
-    generateHTML();
-  }
-};
+
 //Apprentice card information. Name, ID#, Email, temple Name
-const bringonApprentice = () => {
+bringonApprentice = ()=> {
   inquirer
     .prompt([
       {
@@ -67,6 +74,10 @@ const bringonApprentice = () => {
         type: "list",
         choices: [
           {
+            value: "newMaster",
+            name: "Add Master",
+          },
+          {
             value: "bringonApprentice",
             name: "Add Apprentice",
           },
@@ -88,13 +99,13 @@ const bringonApprentice = () => {
         this.apprenticeId,
         this.apprenticeEmail,
         this.temple
-      )
-      squad.push(apprentice);
+      );
+     squad.addSquadMember(apprentice);
       initNext(data.newSquadMember);
-    })
-};
+    });
+}
 //Padowan card information. Name, ID#, Email, temple Name
-const bringonPadowan = () => {
+bringonPadowan = () =>{
   inquirer
     .prompt([
       {
@@ -122,6 +133,10 @@ const bringonPadowan = () => {
         type: "list",
         choices: [
           {
+            value: "newMaster",
+            name: "Add Master",
+          },
+          {
             value: "bringonApprentice",
             name: "Add Apprentice",
           },
@@ -143,14 +158,14 @@ const bringonPadowan = () => {
         this.padowanId,
         this.padowanEmail,
         this.temple
-      )
-      squad.push(padowan);
+      );
+      squad.addSquadMember(padowan);
       initNext(data.newSquadMember);
     });
-};
+}
 
 //initial question. master card information. Name, ID#, Email, Office#
-// bringonMaster=()=>
+bringonMaster = () =>{
 inquirer
   .prompt([
     {
@@ -178,6 +193,10 @@ inquirer
       type: "list",
       choices: [
         {
+          value: "newMaster",
+          name: "Add Master",
+        },
+        {
           value: "bringonApprentice",
           name: "Add Apprentice",
         },
@@ -195,25 +214,35 @@ inquirer
   .then((data) => {
     //pushes padowan info to the array
     const master = new Master(
-      this.masterName,
-      this.masterEmail,
-      this.masterOfficeNumber,
-      this.employeeIdMaster
-    )
-    squad.push(master);
+      data.masterName,
+      data.masterEmail,
+      data.masterOfficeNumber,
+      data.employeeIdMaster,
+    );
+    console.log(master);
+    squad.addSquadMember(master);
     initNext(data.newSquadMember);
   });
+}
 
-  let squadString = JSON.stringify(squad);
-function generateHtml() {
+function initNext(input) {
+  const { bringonMaster, bringonApprentice, bringonPadowan } = input;
+  if (input === "newMaster") {
+    bringonMaster();
+  }
+  if (input === "bringonApprentice") {
+    bringonApprentice();
+  }
+  if (input === "bringonPadowan") {
+    bringonPadowan();
+  }
   
-  fs.writeFile(`./dist/index-test3.html`, squadString , "utf-8", (err) =>
-    err ? console.log(err) : console.log("Successfully sent squad info to the squad deck!")
-  );
-};
+  if (input === "finish") {
+    squad.saveFile();;
+  }
+}
+bringonMaster();
+
 
 //program init
-// init = () => {
-// bringonMaster();
-// };
-// init();
+
